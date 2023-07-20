@@ -1,5 +1,5 @@
-import { RoomButton } from "./styles";
+import { RoomButtonStyled } from "./styles";
 
-export default function RoomsButton() {
-  return <RoomButton>Keine Angabe</RoomButton>;
+export default function RoomButton({ room }) {
+  return <RoomButtonStyled>{room.state}</RoomButtonStyled>;
 }

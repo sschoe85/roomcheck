@@ -11,7 +11,6 @@ const RoomListItem = styled.li`
   list-style: none;
   font-size: 20px;
   margin-bottom: 40px;
-  background-color: #ced4da;
   border-radius: 4px;
   padding: 10px;
   margin-right: 30px;

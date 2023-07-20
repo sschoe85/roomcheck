@@ -1,3 +1,4 @@
+import RoomsButton from "../RoomButton";
 import { RoomListContainer, RoomListTitle, RoomListItem } from "./styles";
 export default function RoomList() {
   // Dummy data for the rooms array
@@ -18,6 +19,7 @@ export default function RoomList() {
           <RoomListItem key={room.id}>{room.name}</RoomListItem>
         ))}
       </ul>
+      <RoomsButton></RoomsButton>
     </RoomListContainer>
   );
 }

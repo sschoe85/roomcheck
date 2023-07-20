@@ -5,7 +5,7 @@ const RoomButtonStyled = styled.button`
   outline: 0;
   cursor: pointer;
   border: none;
-  padding: 0 56px;
+  padding: 0 20px;
   height: 45px;
   line-height: 45px;
   border-radius: 7px;

@@ -6,7 +6,6 @@ export default function Home() {
   return (
     <main>
       <Heading>🏫✅ RoomCheck ✅🏫</Heading>
-      <SubHeading>Stay Organized with RoomCheck</SubHeading>
       <RoomList />
     </main>
   );

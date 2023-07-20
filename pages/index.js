@@ -1,11 +1,13 @@
 import Heading from "../components/Heading";
+import RoomList from "../components/RoomList";
 import SubHeading from "../components/SubHeading";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🏄‍♂️🏄‍♀️🏄 Capstone Template 🏄🏄‍♀️🏄‍♂️</Heading>
-      <SubHeading>Happy hacking!</SubHeading>
+      <Heading>🏫✅ RoomCheck ✅🏫</Heading>
+      <SubHeading>Stay Organized with RoomCheck</SubHeading>
+      <RoomList />
     </main>
   );
 }

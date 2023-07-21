@@ -19,4 +19,8 @@ const RoomListItem = styled.li`
   align-items: center;
 `;
 
-export { RoomListContainer, RoomListTitle, RoomListItem };
+const BasicListItem = styled.li`
+  list-style: none;
+`;
+
+export { RoomListContainer, RoomListTitle, RoomListItem, BasicListItem };

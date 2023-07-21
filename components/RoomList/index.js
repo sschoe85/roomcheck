@@ -1,5 +1,5 @@
 import RoomButton from "../RoomButton";
-import { RoomListContainer, RoomListItem } from "./styles";
+import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
 
@@ -17,14 +17,14 @@ export default function RoomList() {
     <RoomListContainer>
       <ul>
         {rooms.map((room, index) => (
-          <div key={room.id}>
+          <BasicListItem key={room.id}>
             <RoomListItem key={room.id}>
               <RoomIcon />
               {room.name}
               <RoomButton room={room} />
             </RoomListItem>
-            {index !== rooms.length - 1 && <Divider />}
-          </div>
+            {index !== rooms.length - 1 && <Divider key={room.id} />}
+          </BasicListItem>
         ))}
       </ul>
     </RoomListContainer>

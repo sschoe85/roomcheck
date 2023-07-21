@@ -29,13 +29,13 @@ const StyledRoomButton = styled.button`
   &:hover {
     background-color: ${(props) =>
       props.state === "Keine Angabe"
-        ? "#919191" /* Slightly darken grey on hover */
+        ? "#919191"
         : props.state === "Plätze frei"
-        ? "#00822f" /* Slightly darken green on hover */
+        ? "#00822f"
         : props.state === "Wenige Plätze frei"
-        ? "#e68a00" /* Slightly darken orange on hover */
+        ? "#e68a00"
         : props.state === "Plätze belegt"
-        ? "#b60023" /* Slightly darken red on hover */
+        ? "#b60023"
         : "transparent"};
   }
 `;

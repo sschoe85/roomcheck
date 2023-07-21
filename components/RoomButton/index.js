@@ -1,5 +1,5 @@
-import { RoomButtonStyled } from "./styles";
+import { StyledRoomButton } from "./styles";
 
 export default function RoomButton({ room }) {
-  return <RoomButtonStyled>{room.state}</RoomButtonStyled>;
+  return <StyledRoomButton>{room.state}</StyledRoomButton>;
 }

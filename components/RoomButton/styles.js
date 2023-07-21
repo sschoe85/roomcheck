@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RoomButtonStyled = styled.button`
+const StyledRoomButton = styled.button`
   display: inline-block;
   outline: 0;
   cursor: pointer;
@@ -22,4 +22,4 @@ const RoomButtonStyled = styled.button`
   }
 `;
 
-export { RoomButtonStyled };
+export { StyledRoomButton };

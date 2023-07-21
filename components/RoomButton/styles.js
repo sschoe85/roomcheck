@@ -15,6 +15,11 @@ const RoomButtonStyled = styled.button`
   color: #343a40;
   box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 20px rgb(93 93 93 / 23%);
+  }
 `;
 
 export { RoomButtonStyled };

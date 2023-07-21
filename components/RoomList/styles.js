@@ -19,7 +19,7 @@ const RoomListItem = styled.li`
   align-items: center;
 `;
 
-const BasicListItem = styled.li`
+const BasicListItem = styled.div`
   list-style: none;
 `;
 

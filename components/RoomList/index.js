@@ -1,5 +1,5 @@
 import RoomButton from "../RoomButton";
-import { RoomListContainer, RoomListTitle, RoomListItem } from "./styles";
+import { RoomListContainer, RoomListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
 
@@ -15,7 +15,6 @@ export default function RoomList() {
 
   return (
     <RoomListContainer>
-      <RoomListTitle>Room List</RoomListTitle>
       <ul>
         {rooms.map((room, index) => (
           <div key={room.id}>

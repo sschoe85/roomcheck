@@ -15,7 +15,7 @@ const RoomListItem = styled.li`
   padding: 10px;
   margin-right: 30px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 `;
 

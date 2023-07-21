@@ -12,24 +12,32 @@ const StyledRoomButton = styled.button`
   border-radius: 7px;
   font-weight: 400;
   font-size: 16px;
-  color: #ffff;
   box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 6px 20px rgb(93 93 93 / 23%);
-  }
 
   /* Set colors based on the text content */
   background-color: ${(props) =>
     props.state === "Keine Angabe"
-      ? "grey"
+      ? "#a0a0a0"
       : props.state === "Plätze frei"
-      ? "green"
+      ? "#0AA33F"
       : props.state === "Wenige Plätze frei"
-      ? "orange"
-      : "red"};
+      ? "#ff9f1c"
+      : "#d90429"};
+  color: white;
+
+  &:hover {
+    background-color: ${(props) =>
+      props.state === "Keine Angabe"
+        ? "#919191" /* Slightly darken grey on hover */
+        : props.state === "Plätze frei"
+        ? "#00822f" /* Slightly darken green on hover */
+        : props.state === "Wenige Plätze frei"
+        ? "#e68a00" /* Slightly darken orange on hover */
+        : props.state === "Plätze belegt"
+        ? "#b60023" /* Slightly darken red on hover */
+        : "transparent"};
+  }
 `;
 
 export { StyledRoomButton };

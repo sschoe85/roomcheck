@@ -29,46 +29,59 @@ export default function RoomList() {
 
   //fetch room data
 
-  useEffect(() => {
-    async function fetchRoomData() {
-      try {
-        const response = await fetch("/api/rooms");
-        console.log("response:" + response);
-        if (!response.ok) {
-          throw new Error("Failed to fetch room data");
-        }
-        const data = await response.json();
-        console.log("data:" + data);
-        setRooms(data);
-      } catch (error) {
-        console.error("Error fetching room data:", error);
+  async function fetchRoomData() {
+    try {
+      const response = await fetch("/api/rooms");
+      if (!response.ok) {
+        throw new Error("Failed to fetch room data");
       }
+      const data = await response.json();
+      setRooms(data);
+    } catch (error) {
+      console.error("Error fetching room data:", error);
     }
+  }
 
+  useEffect(() => {
     fetchRoomData();
   }, []);
-
-  function updateRoomState(roomId, newState) {
+  async function updateRoomState(roomId, newState) {
     //API Call for updating the room state
+    try {
+      const response = await fetch(`/api/rooms/${roomId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newState }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update room status");
+      }
+
+      // Fetch the updated room data after updating the status
+      await fetchRoomData();
+    } catch (error) {
+      console.error("Error updating room status:", error);
+    }
   }
 
   return (
     <RoomListContainer>
       <ul>
         {rooms.map((room, index) => (
-          <BasicListItem key={room.id}>
-            <RoomListItem key={room.id}>
+          <BasicListItem key={room._id}>
+            <RoomListItem key={room._id}>
               <RoomIcon />
               {room.name}
               <RoomButton
                 room={room}
-                updateRoomState={(newState) =>
-                  updateRoomState(room.id, newState)
-                }
+                updateRoomState={updateRoomState}
                 initialRoomState={room.status}
               />
             </RoomListItem>
-            {index !== rooms.length - 1 && <Divider key={room.id} />}
+            {index !== rooms.length - 1 && <Divider />}
           </BasicListItem>
         ))}
       </ul>

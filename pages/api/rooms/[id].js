@@ -1,26 +1,16 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import dbConnect from "../../db/models/connect";
-import Room from "../../db/models/Room";
+import dbConnect from "../../../db/models/connect";
+import Room from "../../../db/models/Room";
 
 export default async function handler(request, response) {
   await dbConnect(); //establishing connection with MongoDB database
-
-  if (request.method === "GET") {
-    const rooms = await Room.find(); //find all rooms in the database
-    response.status(200).json(rooms);
-    return;
-  }
 
   if (request.method === "PUT") {
     const { id } = request.query;
     const { status } = request.body;
 
     try {
-      const updatedRoom = await Room.findByIdAndUpdate(
-        id,
-        { status },
-        { new: true }
-      );
+      const updatedRoom = await Room.findByIdAndUpdate(id, { status });
       if (!updatedRoom) {
         return response.status(404).json({ message: "Room not found" });
       }

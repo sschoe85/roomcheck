@@ -30,23 +30,23 @@ export default function RoomList() {
 
   //fetch room data
 
-  async function fetchRoomData() {
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/rooms");
-      if (!response.ok) {
-        throw new Error("Failed to fetch room data");
-      }
-      const data = await response.json();
-      setRooms(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Error fetching room data:", error);
-      setIsLoading(false);
-    }
-  }
-
   useEffect(() => {
+    async function fetchRoomData() {
+      setIsLoading(true); // Set loading to true when data fetching starts
+      try {
+        const response = await fetch("/api/rooms");
+        if (!response.ok) {
+          throw new Error("Failed to fetch room data");
+        }
+        const data = await response.json();
+        setRooms(data);
+        setIsLoading(false); // Set loading to false when data fetching is complete
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+        setIsLoading(false); // Set loading to false on error as well
+      }
+    }
+
     fetchRoomData();
   }, []);
   async function updateRoomState(roomId, newState) {
@@ -96,5 +96,3 @@ export default function RoomList() {
     </RoomListContainer>
   );
 }
-
-//comment for again triggering redeployment

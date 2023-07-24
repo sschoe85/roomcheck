@@ -5,7 +5,7 @@ import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
 import { useEffect } from "react";
 
-export default function RoomList() {
+export default function RoomList({ userType }) {
   /*
   // Dummy data for the rooms array
   const [rooms, setRooms] = useState([
@@ -84,7 +84,9 @@ export default function RoomList() {
                 {room.name}
                 <RoomButton
                   room={room}
-                  updateRoomState={updateRoomState}
+                  updateRoomState={
+                    userType === "teacher" ? updateRoomState : undefined
+                  }
                   initialRoomState={room.status}
                 />
               </RoomListItem>

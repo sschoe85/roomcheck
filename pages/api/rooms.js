@@ -11,5 +11,26 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (request.method === "PUT") {
+    const { id } = request.query;
+    const { status } = request.body;
+
+    try {
+      const updatedRoom = await Room.findByIdAndUpdate(
+        id,
+        { status },
+        { new: true }
+      );
+      if (!updatedRoom) {
+        return response.status(404).json({ message: "Room not found" });
+      }
+      response.status(200).json(updatedRoom);
+      return;
+    } catch (error) {
+      response.status(500).json({ message: "Server Error" });
+      return;
+    }
+  }
+
   response.status(405).json({ status: "Request method not implemented." });
 }

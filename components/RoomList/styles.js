@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const RoomListContainer = styled.div`
   text-align: center;
+  margin-top: 50px;
 `;
 
 const RoomListTitle = styled.h3`

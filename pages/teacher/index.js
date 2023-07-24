@@ -6,7 +6,6 @@ import { StyledTeacherIconTeacherView } from "../../components/TeacherIcon/style
 export default function TeacherView() {
   return (
     <>
-      <SubHeading>Lehrer-Sicht</SubHeading>
       <Link href="/teacher">
         <StyledTeacherIconTeacherView />
       </Link>

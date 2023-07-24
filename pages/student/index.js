@@ -8,7 +8,6 @@ import { StyledStudentIconStudentView } from "../../components/StudentIcon/style
 export default function StudentView() {
   return (
     <>
-      <SubHeading>Schüler-Sicht</SubHeading>
       <Link href="/student">
         <StyledStudentIconStudentView />
       </Link>

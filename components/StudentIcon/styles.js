@@ -7,6 +7,7 @@ const StyledStudentIcon = styled(PiStudentBold)`
   position: fixed;
   top: 15px;
   right: 25px;
+  z-index: 1;
 `;
 
 const StyledStudentIconStudentView = styled(PiStudentBold)`
@@ -15,6 +16,6 @@ const StyledStudentIconStudentView = styled(PiStudentBold)`
   position: fixed;
   top: 15px;
   right: 100px;
+  z-index: 1;
 `;
-
 export { StyledStudentIcon, StyledStudentIconStudentView };

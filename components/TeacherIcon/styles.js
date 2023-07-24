@@ -7,6 +7,7 @@ const StyledTeacherIcon = styled(GiTeacher)`
   position: fixed;
   top: 15px;
   right: 25px;
+  z-index: 1;
 `;
 
 const StyledTeacherIconTeacherView = styled(GiTeacher)`
@@ -15,6 +16,7 @@ const StyledTeacherIconTeacherView = styled(GiTeacher)`
   position: fixed;
   top: 15px;
   right: 100px;
+  z-index: 1;
 `;
 
 const StyledTeacherIconHomepage = styled(GiTeacher)`
@@ -23,6 +25,7 @@ const StyledTeacherIconHomepage = styled(GiTeacher)`
   position: fixed;
   top: 15px;
   right: 100px;
+  z-index: 1;
 `;
 
 export {

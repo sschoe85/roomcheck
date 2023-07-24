@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StyledRoomButton } from "./styles";
+import { useEffect } from "react";
 
 export default function RoomButton({
   room,
@@ -7,7 +8,11 @@ export default function RoomButton({
   initialRoomState,
 }) {
   //state to keep track of the current room state
-  const [currentState, setCurrentState] = useState(room.state);
+  const [currentState, setCurrentState] = useState(initialRoomState);
+
+  useEffect(() => {
+    setCurrentState(initialRoomState);
+  }, [initialRoomState]);
 
   function toggleState() {
     let newState;
@@ -28,6 +33,7 @@ export default function RoomButton({
         newState = "Keine Angabe";
     }
     setCurrentState(newState);
+    updateRoomState(room.id, newState);
   }
 
   return (

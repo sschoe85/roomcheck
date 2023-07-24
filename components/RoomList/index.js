@@ -3,8 +3,10 @@ import RoomButton from "../RoomButton";
 import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
+import { useEffect } from "react";
 
 export default function RoomList() {
+  /*
   // Dummy data for the rooms array
   const [rooms, setRooms] = useState([
     { id: 1, name: "Room 101", state: "Keine Angabe" },
@@ -21,6 +23,34 @@ export default function RoomList() {
     );
     setRooms(updatedRooms);
   }
+  */
+
+  const [rooms, setRooms] = useState([]);
+
+  //fetch room data
+
+  useEffect(() => {
+    async function fetchRoomData() {
+      try {
+        const response = await fetch("/api/rooms");
+        console.log("response:" + response);
+        if (!response.ok) {
+          throw new Error("Failed to fetch room data");
+        }
+        const data = await response.json();
+        console.log("data:" + data);
+        setRooms(data);
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+      }
+    }
+
+    fetchRoomData();
+  }, []);
+
+  function updateRoomState(roomId, newState) {
+    //API Call for updating the room state
+  }
 
   return (
     <RoomListContainer>
@@ -35,7 +65,7 @@ export default function RoomList() {
                 updateRoomState={(newState) =>
                   updateRoomState(room.id, newState)
                 }
-                initialRoomState={room.state}
+                initialRoomState={room.status}
               />
             </RoomListItem>
             {index !== rooms.length - 1 && <Divider key={room.id} />}

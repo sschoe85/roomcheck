@@ -32,11 +32,9 @@ export default function RoomButton({
       default:
         newState = "Keine Angabe";
     }
-    console.log("RoomButton - Received roomId:", room._id);
+
     setCurrentState(newState);
     updateRoomState(room._id, newState);
-
-    console.log("RoomButton - Received roomId:", room.id);
   }
 
   return (

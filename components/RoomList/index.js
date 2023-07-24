@@ -3,8 +3,10 @@ import RoomButton from "../RoomButton";
 import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
+import { useEffect } from "react";
 
 export default function RoomList() {
+  /*
   // Dummy data for the rooms array
   const [rooms, setRooms] = useState([
     { id: 1, name: "Room 101", state: "Keine Angabe" },
@@ -21,27 +23,76 @@ export default function RoomList() {
     );
     setRooms(updatedRooms);
   }
+  */
+
+  const [rooms, setRooms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  //fetch room data
+
+  useEffect(() => {
+    async function fetchRoomData() {
+      setIsLoading(true); // Set loading to true when data fetching starts
+      try {
+        const response = await fetch("/api/rooms");
+        if (!response.ok) {
+          throw new Error("Failed to fetch room data");
+        }
+        const data = await response.json();
+        setRooms(data);
+        setIsLoading(false); // Set loading to false when data fetching is complete
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+        setIsLoading(false); // Set loading to false on error as well
+      }
+    }
+
+    fetchRoomData();
+  }, []);
+  async function updateRoomState(roomId, newState) {
+    //API Call for updating the room state
+    try {
+      const response = await fetch(`/api/rooms/${roomId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newState }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update room status");
+      }
+
+      // Fetch the updated room data after updating the status
+      await fetchRoomData();
+    } catch (error) {
+      console.error("Error updating room status:", error);
+    }
+  }
 
   return (
     <RoomListContainer>
-      <ul>
-        {rooms.map((room, index) => (
-          <BasicListItem key={room.id}>
-            <RoomListItem key={room.id}>
-              <RoomIcon />
-              {room.name}
-              <RoomButton
-                room={room}
-                updateRoomState={(newState) =>
-                  updateRoomState(room.id, newState)
-                }
-                initialRoomState={room.state}
-              />
-            </RoomListItem>
-            {index !== rooms.length - 1 && <Divider key={room.id} />}
-          </BasicListItem>
-        ))}
-      </ul>
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <ul>
+          {rooms.map((room, index) => (
+            <BasicListItem key={room._id}>
+              <RoomListItem key={room._id}>
+                <RoomIcon />
+                {room.name}
+                <RoomButton
+                  room={room}
+                  updateRoomState={updateRoomState}
+                  initialRoomState={room.status}
+                />
+              </RoomListItem>
+              {index !== rooms.length - 1 && <Divider />}
+            </BasicListItem>
+          ))}
+        </ul>
+      )}
     </RoomListContainer>
   );
 }

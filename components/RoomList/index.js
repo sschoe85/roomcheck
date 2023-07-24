@@ -26,10 +26,12 @@ export default function RoomList() {
   */
 
   const [rooms, setRooms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   //fetch room data
 
   async function fetchRoomData() {
+    setIsLoading(true);
     try {
       const response = await fetch("/api/rooms");
       if (!response.ok) {
@@ -37,8 +39,10 @@ export default function RoomList() {
       }
       const data = await response.json();
       setRooms(data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching room data:", error);
+      setIsLoading(false);
     }
   }
 
@@ -69,22 +73,26 @@ export default function RoomList() {
 
   return (
     <RoomListContainer>
-      <ul>
-        {rooms.map((room, index) => (
-          <BasicListItem key={room._id}>
-            <RoomListItem key={room._id}>
-              <RoomIcon />
-              {room.name}
-              <RoomButton
-                room={room}
-                updateRoomState={updateRoomState}
-                initialRoomState={room.status}
-              />
-            </RoomListItem>
-            {index !== rooms.length - 1 && <Divider />}
-          </BasicListItem>
-        ))}
-      </ul>
+      {isLoading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <ul>
+          {rooms.map((room, index) => (
+            <BasicListItem key={room._id}>
+              <RoomListItem key={room._id}>
+                <RoomIcon />
+                {room.name}
+                <RoomButton
+                  room={room}
+                  updateRoomState={updateRoomState}
+                  initialRoomState={room.status}
+                />
+              </RoomListItem>
+              {index !== rooms.length - 1 && <Divider />}
+            </BasicListItem>
+          ))}
+        </ul>
+      )}
     </RoomListContainer>
   );
 }

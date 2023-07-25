@@ -6,16 +6,16 @@ const StyledAdminIcon = styled(MdOutlineAdminPanelSettings)`
   color: #ff0054;
   position: fixed;
   top: 15px;
-  right: 170px;
+  right: 175px;
   z-index: 1;
 `;
 
-const StyledStudentIconStudentView = styled(MdOutlineAdminPanelSettings)`
+const StyledAdminIconHomepage = styled(MdOutlineAdminPanelSettings)`
   font-size: 60px;
-  color: #ff0054;
+  color: #343a40;
   position: fixed;
   top: 15px;
-  right: 100px;
+  right: 175px;
   z-index: 1;
 `;
-export { StyledAdminIcon };
+export { StyledAdminIcon, StyledAdminIconHomepage };

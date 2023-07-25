@@ -38,7 +38,11 @@ export default function RoomButton({
   }
 
   return (
-    <StyledRoomButton onClick={toggleState} state={currentState}>
+    <StyledRoomButton
+      onClick={toggleState}
+      state={currentState}
+      disabled={!updateRoomState}
+    >
       {currentState}
     </StyledRoomButton>
   );

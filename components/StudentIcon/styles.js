@@ -18,4 +18,17 @@ const StyledStudentIconStudentView = styled(PiStudentBold)`
   right: 100px;
   z-index: 1;
 `;
-export { StyledStudentIcon, StyledStudentIconStudentView };
+const StyledStudentIconAdminView = styled(PiStudentBold)`
+  font-size: 60px;
+  color: #343a40;
+  position: fixed;
+  top: 15px;
+  right: 100px;
+  z-index: 1;
+`;
+
+export {
+  StyledStudentIcon,
+  StyledStudentIconStudentView,
+  StyledStudentIconAdminView,
+};

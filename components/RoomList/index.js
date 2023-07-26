@@ -4,27 +4,10 @@ import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import RoomForm from "../RoomForm";
 
 export default function RoomList({ userType }) {
-  /*
-  // Dummy data for the rooms array
-  const [rooms, setRooms] = useState([
-    { id: 1, name: "Room 101", state: "Keine Angabe" },
-    { id: 2, name: "Room 202", state: "Keine Angabe" },
-    { id: 3, name: "Room 303", state: "Keine Angabe" },
-    { id: 4, name: "Room 404", state: "Keine Angabe" },
-    { id: 5, name: "Room 505", state: "Keine Angabe" },
-  ]);
-
-  //Update des Zustand des Raums im Array
-  function updateRoomState(roomId, newState) {
-    const updatedRooms = rooms.map((room) =>
-      room.id === roomId ? { ...room, state: newState } : room
-    );
-    setRooms(updatedRooms);
-  }
-  */
-
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,6 +32,7 @@ export default function RoomList({ userType }) {
 
     fetchRoomData();
   }, []);
+
   async function updateRoomState(roomId, newState) {
     //API Call for updating the room state
     try {

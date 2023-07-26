@@ -3,6 +3,7 @@ import Link from "next/link";
 import { StyledTeacherIcon } from "../../components/TeacherIcon/styles";
 import { StyledStudentIconAdminView } from "../../components/StudentIcon/styles";
 import { StyledAdminIcon } from "../../components/AdminIcon/styles";
+import BottomNavigation from "../../components/BottomNavigation";
 
 export default function AdminView() {
   return (
@@ -17,6 +18,7 @@ export default function AdminView() {
         <StyledTeacherIcon />
       </Link>
       <RoomList />
+      <BottomNavigation />
     </>
   );
 }

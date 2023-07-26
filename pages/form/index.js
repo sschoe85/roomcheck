@@ -1,4 +1,4 @@
-import RoomForm from "../../components/RoomForm/styles";
+import RoomForm from "../../components/RoomForm";
 
 export default function Form() {
   return <RoomForm />;

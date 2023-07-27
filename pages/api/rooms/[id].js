@@ -7,6 +7,20 @@ export default async function handler(request, response) {
 
   const { id } = request.query;
 
+  if (request.method === "GET") {
+    try {
+      const room = await Room.findById(id);
+      if (!room) {
+        return response.status(404).json({ message: "Room not found" });
+      }
+      response.status(200).json(room);
+      return;
+    } catch (error) {
+      response.status(500).json({ message: "Server Error" });
+      return;
+    }
+  }
+
   if (request.method === "PUT") {
     try {
       const { roomName, roomSubject } = request.body;

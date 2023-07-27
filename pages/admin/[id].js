@@ -13,7 +13,7 @@ export default function EditRoomPage() {
     // Fetch room data using the roomId when the component mounts
     async function fetchRoomData() {
       try {
-        const response = await fetch(`/api/rooms/edit/${id}`);
+        const response = await fetch(`/api/rooms/${id}`);
         const data = await response.json();
         if (response.ok) {
           setRoomData(data);

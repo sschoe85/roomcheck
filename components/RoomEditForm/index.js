@@ -2,16 +2,29 @@ import { useState } from "react";
 import Heading from "../Heading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function RoomEditForm({ room }) {
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    roomName: room ? room.name : "",
-    roomSubject: room ? room.subject : "",
-  });
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    setFormData({
+      roomName: room?.name || "",
+      roomSubject: room?.subject || "",
+    });
+  }, [room]);
+
+  console.log("Room object:", room);
+  console.log("FormData:", formData);
 
   async function handleSubmitForm(event) {
     event.preventDefault();
+
+    console.log("Request Payload:", {
+      roomName: formData.roomName,
+      roomSubject: formData.roomSubject,
+    });
 
     const response = await fetch(`/api/rooms/${room._id}`, {
       method: "PUT",
@@ -31,13 +44,14 @@ export default function RoomEditForm({ room }) {
       console.error("There seems to be a problem updating the data");
     }
   }
-  function handleChange(event) {
+
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-  }
+  };
 
   return (
     <FormContainer>
@@ -48,8 +62,8 @@ export default function RoomEditForm({ room }) {
           type="text"
           id="roomName"
           name="roomName"
-          dvalue={formData.roomName}
-          onChange={handleChange}
+          value={formData.roomName}
+          onChange={handleInputChange}
         />
         <Label htmlFor="roomSubject">Fach</Label>
         <Input
@@ -57,7 +71,7 @@ export default function RoomEditForm({ room }) {
           id="roomSubject"
           name="roomSubject"
           value={formData.roomSubject}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
       </Form>

@@ -3,6 +3,7 @@ import RoomButton from "../RoomButton";
 import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
+import Link from "next/link";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
@@ -69,6 +70,11 @@ export default function RoomList({ userType }) {
                   }
                   initialRoomState={room.status}
                 />
+                {userType === "admin" && (
+                  <Link href={`/admin/${room._id}`}>
+                    <button>Edit</button>
+                  </Link>
+                )}
               </RoomListItem>
               {index !== rooms.length - 1 && <Divider />}
             </BasicListItem>

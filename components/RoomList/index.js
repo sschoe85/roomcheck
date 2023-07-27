@@ -1,21 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RoomButton from "../RoomButton";
 import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import RoomForm from "../RoomForm";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  //fetch room data
-
   useEffect(() => {
     async function fetchRoomData() {
-      setIsLoading(true); // Set loading to true when data fetching starts
+      setIsLoading(true);
       try {
         const response = await fetch("/api/rooms");
         if (!response.ok) {
@@ -23,10 +18,10 @@ export default function RoomList({ userType }) {
         }
         const data = await response.json();
         setRooms(data);
-        setIsLoading(false); // Set loading to false when data fetching is complete
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching room data:", error);
-        setIsLoading(false); // Set loading to false on error as well
+        setIsLoading(false);
       }
     }
 
@@ -66,6 +61,7 @@ export default function RoomList({ userType }) {
               <RoomListItem key={room._id}>
                 <RoomIcon />
                 {room.name}
+                {room.subject}
                 <RoomButton
                   room={room}
                   updateRoomState={

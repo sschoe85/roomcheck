@@ -3,15 +3,18 @@ import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useState } from "react";
 
 export default function RoomForm({ handleSubmit }) {
+  //create a state for the form
   const [formData, setFormData] = useState({
     roomName: "",
     roomSubject: "",
   });
 
+  //function to handle form submission
   function handleSubmitForm(event) {
-    event.preventDefault();
-    handleSubmit(formData);
+    event.preventDefault(); //prevent default form submission behavior (page reload on submit)
+    handleSubmit(formData); //function passed from the parent component
 
+    //reset form
     setFormData({
       roomName: "",
       roomSubject: "",
@@ -27,7 +30,6 @@ export default function RoomForm({ handleSubmit }) {
           type="text"
           id="roomName"
           name="roomName"
-          value={formData.roomName}
           onChange={(event) =>
             setFormData({
               ...formData,
@@ -40,7 +42,6 @@ export default function RoomForm({ handleSubmit }) {
           type="text"
           id="roomSubject"
           name="roomSubject"
-          value={formData.roomSubject}
           onChange={(event) =>
             setFormData({
               ...formData,

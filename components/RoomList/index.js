@@ -1,38 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RoomButton from "../RoomButton";
 import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
-import { useEffect } from "react";
 
 export default function RoomList({ userType }) {
-  /*
-  // Dummy data for the rooms array
-  const [rooms, setRooms] = useState([
-    { id: 1, name: "Room 101", state: "Keine Angabe" },
-    { id: 2, name: "Room 202", state: "Keine Angabe" },
-    { id: 3, name: "Room 303", state: "Keine Angabe" },
-    { id: 4, name: "Room 404", state: "Keine Angabe" },
-    { id: 5, name: "Room 505", state: "Keine Angabe" },
-  ]);
-
-  //Update des Zustand des Raums im Array
-  function updateRoomState(roomId, newState) {
-    const updatedRooms = rooms.map((room) =>
-      room.id === roomId ? { ...room, state: newState } : room
-    );
-    setRooms(updatedRooms);
-  }
-  */
-
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  //fetch room data
-
   useEffect(() => {
     async function fetchRoomData() {
-      setIsLoading(true); // Set loading to true when data fetching starts
+      setIsLoading(true);
       try {
         const response = await fetch("/api/rooms");
         if (!response.ok) {
@@ -40,15 +18,16 @@ export default function RoomList({ userType }) {
         }
         const data = await response.json();
         setRooms(data);
-        setIsLoading(false); // Set loading to false when data fetching is complete
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching room data:", error);
-        setIsLoading(false); // Set loading to false on error as well
+        setIsLoading(false);
       }
     }
 
     fetchRoomData();
   }, []);
+
   async function updateRoomState(roomId, newState) {
     //API Call for updating the room state
     try {
@@ -82,6 +61,7 @@ export default function RoomList({ userType }) {
               <RoomListItem key={room._id}>
                 <RoomIcon />
                 {room.name}
+                {room.subject}
                 <RoomButton
                   room={room}
                   updateRoomState={

@@ -5,14 +5,18 @@ import Room from "../../../db/models/Room";
 export default async function handler(request, response) {
   await dbConnect(); //establishing connection with MongoDB database
 
-  if (request.method === "PUT") {
-    const { id } = request.query;
-    const { status } = request.body;
+  const { id } = request.query;
 
+  if (request.method === "PUT") {
     try {
-      const updatedRoom = await Room.findByIdAndUpdate(id, { status });
+      const { roomName, roomSubject } = request.body;
+      const updatedRoom = await Room.findByIdAndUpdate(
+        id,
+        { name: roomName, subject: roomSubject },
+        { new: true } // Return the updated room after the update
+      );
       if (!updatedRoom) {
-        return response.status(404).json({ message: "Room not found" });
+        return response.status(404).json({ error: "Room not found" });
       }
       response.status(200).json(updatedRoom);
       return;

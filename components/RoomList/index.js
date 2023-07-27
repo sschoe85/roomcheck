@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import RoomButton from "../RoomButton";
-import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
+import {
+  RoomListContainer,
+  RoomListItem,
+  BasicListItem,
+  ButtonContainer,
+} from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
 import Link from "next/link";
+import EditButton from "../EditButton";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
@@ -63,18 +69,20 @@ export default function RoomList({ userType }) {
                 <RoomIcon />
                 {room.name}
                 {room.subject}
-                <RoomButton
-                  room={room}
-                  updateRoomState={
-                    userType === "teacher" ? updateRoomState : undefined
-                  }
-                  initialRoomState={room.status}
-                />
-                {userType === "admin" && (
-                  <Link href={`/admin/${room._id}`}>
-                    <button>Edit</button>
-                  </Link>
-                )}
+                <ButtonContainer>
+                  <RoomButton
+                    room={room}
+                    updateRoomState={
+                      userType === "teacher" ? updateRoomState : undefined
+                    }
+                    initialRoomState={room.status}
+                  />
+                  {userType === "admin" && (
+                    <Link href={`/admin/${room._id}`}>
+                      <EditButton>Edit</EditButton>
+                    </Link>
+                  )}
+                </ButtonContainer>
               </RoomListItem>
               {index !== rooms.length - 1 && <Divider />}
             </BasicListItem>

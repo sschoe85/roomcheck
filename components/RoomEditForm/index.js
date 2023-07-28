@@ -58,7 +58,6 @@ export default function RoomEditForm({ room }) {
   };
 
   async function handleDelete() {
-    console.log("Delete button clicked");
     try {
       const response = await fetch(`/api/rooms/${room._id}`, {
         method: "DELETE",

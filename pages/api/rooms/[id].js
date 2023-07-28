@@ -23,7 +23,7 @@ export default async function handler(request, response) {
 
   if (request.method === "DELETE") {
     try {
-      await dbConnect();
+      console.log("Delete request received for Room ID:", id);
 
       const deletedRoom = await Room.findByIdAndDelete(id);
       if (!deletedRoom) {

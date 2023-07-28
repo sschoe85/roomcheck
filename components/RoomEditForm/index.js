@@ -3,6 +3,7 @@ import Heading from "../Heading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import DeleteButton from "../DeleteButton";
 
 export default function RoomEditForm({ room }) {
   const router = useRouter();
@@ -68,6 +69,7 @@ export default function RoomEditForm({ room }) {
           onChange={handleInputChange}
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
+        <DeleteButton />
       </Form>
     </FormContainer>
   );

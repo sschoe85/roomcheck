@@ -28,17 +28,18 @@ const Input = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  padding: 10px 20px;
-  margin-top: 30px;
+  padding: 0 20px;
+  height: 45px;
+  margin-top: 15px;
   font-size: 16px;
-  background-color: #ff0054;
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #d60045;
+    background-color: #0056b3;
   }
 `;
 

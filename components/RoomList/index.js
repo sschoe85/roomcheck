@@ -1,37 +1,24 @@
 import { useState, useEffect } from "react";
 import RoomButton from "../RoomButton";
-import { RoomListContainer, RoomListItem, BasicListItem } from "./styles";
+import {
+  RoomListContainer,
+  RoomListItem,
+  BasicListItem,
+  ButtonContainer,
+} from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
+import Link from "next/link";
+import EditButton from "../EditButton";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchRoomData() {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/rooms");
-        if (!response.ok) {
-          throw new Error("Failed to fetch room data");
-        }
-        const data = await response.json();
-        setRooms(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching room data:", error);
-        setIsLoading(false);
-      }
-    }
-
-    fetchRoomData();
-  }, []);
-
   async function updateRoomState(roomId, newState) {
-    //API Call for updating the room state
+    // API Call for updating the room state
     try {
-      const response = await fetch(`/api/rooms/${roomId}`, {
+      const response = await fetch(`/api/rooms/updatestatus/${roomId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -50,6 +37,26 @@ export default function RoomList({ userType }) {
     }
   }
 
+  async function fetchRoomData() {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/rooms");
+      if (!response.ok) {
+        throw new Error("Failed to fetch room data");
+      }
+      const data = await response.json();
+      setRooms(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching room data:", error);
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchRoomData();
+  }, []);
+
   return (
     <RoomListContainer>
       {isLoading ? (
@@ -62,13 +69,20 @@ export default function RoomList({ userType }) {
                 <RoomIcon />
                 {room.name}
                 {room.subject}
-                <RoomButton
-                  room={room}
-                  updateRoomState={
-                    userType === "teacher" ? updateRoomState : undefined
-                  }
-                  initialRoomState={room.status}
-                />
+                <ButtonContainer>
+                  <RoomButton
+                    room={room}
+                    updateRoomState={
+                      userType === "teacher" ? updateRoomState : undefined
+                    }
+                    initialRoomState={room.status}
+                  />
+                  {userType === "admin" && (
+                    <Link href={`/admin/${room._id}`}>
+                      <EditButton>Edit</EditButton>
+                    </Link>
+                  )}
+                </ButtonContainer>
               </RoomListItem>
               {index !== rooms.length - 1 && <Divider />}
             </BasicListItem>

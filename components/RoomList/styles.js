@@ -15,6 +15,7 @@ const RoomListItem = styled.li`
   border-radius: 4px;
   padding: 10px;
   margin-right: 30px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -24,4 +25,15 @@ const BasicListItem = styled.div`
   list-style: none;
 `;
 
-export { RoomListContainer, RoomListTitle, RoomListItem, BasicListItem };
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export {
+  RoomListContainer,
+  RoomListTitle,
+  RoomListItem,
+  BasicListItem,
+  ButtonContainer,
+};

@@ -17,7 +17,7 @@ export default function AdminView() {
       <Link href="/teacher">
         <StyledTeacherIcon />
       </Link>
-      <RoomList />
+      <RoomList userType="admin" />
       <BottomNavigation />
     </>
   );

@@ -9,10 +9,12 @@ export default function RoomEditForm({ room }) {
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
-    setFormData({
-      roomName: room?.name || "",
-      roomSubject: room?.subject || "",
-    });
+    if (room) {
+      setFormData({
+        roomName: room.name || "",
+        roomSubject: room.subject || "",
+      });
+    }
   }, [room]);
 
   async function handleSubmitForm(event) {

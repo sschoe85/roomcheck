@@ -15,30 +15,30 @@ export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchRoomData() {
-      setIsLoading(true);
-      try {
-        const response = await fetch("/api/rooms");
-        if (!response.ok) {
-          throw new Error("Failed to fetch room data");
-        }
-        const data = await response.json();
-        setRooms(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching room data:", error);
-        setIsLoading(false);
+  async function fetchRoomData() {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/rooms");
+      if (!response.ok) {
+        throw new Error("Failed to fetch room data");
       }
+      const data = await response.json();
+      setRooms(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching room data:", error);
+      setIsLoading(false);
     }
+  }
 
+  useEffect(() => {
     fetchRoomData();
   }, []);
-
   async function updateRoomState(roomId, newState) {
     //API Call for updating the room state
+    console.log(roomId);
     try {
-      const response = await fetch(`/api/rooms/${roomId}`, {
+      const response = await fetch(`/api/rooms/updatestatus/${roomId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -32,6 +32,8 @@ export default function RoomButton({
       default:
         newState = "Keine Angabe";
     }
+    console.log("Toggling room state. Room ID:", room._id);
+    console.log("New State:", newState);
 
     setCurrentState(newState);
     updateRoomState(room._id, newState);

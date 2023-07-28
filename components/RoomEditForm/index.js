@@ -26,7 +26,7 @@ export default function RoomEditForm({ room }) {
       roomSubject: formData.roomSubject,
     });
 
-    const response = await fetch(`/api/rooms/${room._id}`, {
+    const response = await fetch(`/api/rooms/updateroom/${room._id}`, {
       method: "PUT",
       body: JSON.stringify({
         roomName: formData.roomName,

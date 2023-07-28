@@ -15,16 +15,8 @@ export default function RoomEditForm({ room }) {
     });
   }, [room]);
 
-  console.log("Room object:", room);
-  console.log("FormData:", formData);
-
   async function handleSubmitForm(event) {
     event.preventDefault();
-
-    console.log("Request Payload:", {
-      roomName: formData.roomName,
-      roomSubject: formData.roomSubject,
-    });
 
     const response = await fetch(`/api/rooms/updateroom/${room._id}`, {
       method: "PUT",

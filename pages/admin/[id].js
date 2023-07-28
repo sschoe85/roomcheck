@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import RoomEditForm from "../../components/RoomEditForm";
 
 export default function EditRoomPage() {
@@ -30,8 +29,5 @@ export default function EditRoomPage() {
     }
   }, [id]);
 
-  console.log("roomData:", roomData);
-
-  // Render the RoomEditForm component with the room ID
   return <RoomEditForm room={roomData} />;
 }

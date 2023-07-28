@@ -21,5 +21,22 @@ export default async function handler(request, response) {
     }
   }
 
+  if (request.method === "DELETE") {
+    try {
+      await dbConnect();
+
+      const deletedRoom = await Room.findByIdAndDelete(id);
+      if (!deletedRoom) {
+        return response.status(404).json({ message: "Room not found" });
+      }
+
+      response.status(200).json({ message: "Room deleted successfully" });
+    } catch (error) {
+      response.status(500).json({ message: "Server Error" });
+    }
+  } else {
+    response.status(405).json({ message: "Method not allowed" });
+  }
+
   response.status(405).json({ status: "Request method not implemented." });
 }

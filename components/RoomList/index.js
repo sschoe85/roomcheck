@@ -32,29 +32,30 @@ export default function RoomList({ userType }) {
       }
     }
 
+    async function updateRoomState(roomId, newState) {
+      // API Call for updating the room state
+      try {
+        const response = await fetch(`/api/rooms/updatestatus/${roomId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status: newState }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to update room status");
+        }
+
+        // Fetch the updated room data after updating the status
+        await fetchRoomData();
+      } catch (error) {
+        console.error("Error updating room status:", error);
+      }
+    }
+
     fetchRoomData();
   }, []);
-  async function updateRoomState(roomId, newState) {
-    //API Call for updating the room state
-    try {
-      const response = await fetch(`/api/rooms/updatestatus/${roomId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status: newState }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to update room status");
-      }
-
-      // Fetch the updated room data after updating the status
-      await fetchRoomData();
-    } catch (error) {
-      console.error("Error updating room status:", error);
-    }
-  }
 
   return (
     <RoomListContainer>

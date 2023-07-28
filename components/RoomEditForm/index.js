@@ -10,6 +10,7 @@ import {
 } from "./styles";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { mutate } from "swr";
 
 export default function RoomEditForm({ room }) {
   const router = useRouter();
@@ -65,6 +66,7 @@ export default function RoomEditForm({ room }) {
 
       if (response.ok) {
         console.log("Room deleted successfully!");
+        mutate("/api/rooms");
         router.push("/admin");
       } else {
         console.error("Failed to delete room");

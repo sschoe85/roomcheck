@@ -98,8 +98,8 @@ export default function RoomEditForm({ room }) {
           onChange={handleInputChange}
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
-        <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
       </Form>
+      <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
     </FormContainer>
   );
 }

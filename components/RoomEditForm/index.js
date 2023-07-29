@@ -44,6 +44,7 @@ export default function RoomEditForm({ room }) {
 
     if (response.ok) {
       console.log("Data successfully updated!");
+      mutate("/api/rooms");
       router.push("/admin");
     } else {
       console.error("There seems to be a problem updating the data");

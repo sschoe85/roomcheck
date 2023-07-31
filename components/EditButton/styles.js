@@ -15,11 +15,11 @@ const StyledEditButton = styled.button`
   margin-top: 15px;
   box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-  background-color: #007bff; /* Blue color */
+  background-color: #007bff;
   color: white;
 
   &:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover */
+    background-color: #0056b3;
   }
 `;
 

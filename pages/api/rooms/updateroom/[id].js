@@ -10,10 +10,12 @@ export default async function handler(request, response) {
   if (request.method === "PUT") {
     try {
       const { roomName, roomSubject } = request.body;
+      console.log("Received PUT request with id:", id);
+      console.log("Received PUT request with data:", roomName, roomSubject);
       const updatedRoom = await Room.findByIdAndUpdate(
         id,
-        { name: roomName, subject: roomSubject },
-        { new: true } // Return the updated room after the update
+        { name: roomName, subject: roomSubject }
+        // Return the updated room after the update
       );
       if (!updatedRoom) {
         return response.status(404).json({ error: "Room not found" });

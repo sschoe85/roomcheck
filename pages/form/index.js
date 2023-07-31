@@ -20,7 +20,7 @@ export default function Form() {
       }
 
       // Redirect to the homepage after successful addition
-      router.push("/");
+      router.push("/admin");
     } catch (error) {
       console.error("Error adding new room:", error);
     }

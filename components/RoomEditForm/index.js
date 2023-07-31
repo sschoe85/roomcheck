@@ -1,12 +1,23 @@
 import { useState } from "react";
 import Heading from "../Heading";
-import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
+import {
+  FormContainer,
+  Label,
+  Input,
+  Form,
+  SubmitButton,
+  DeleteButton,
+} from "./styles";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { mutate } from "swr";
 
 export default function RoomEditForm({ room }) {
   const router = useRouter();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    roomName: room?.name || "",
+    roomSubject: room?.subject || "",
+  });
 
   useEffect(() => {
     if (room) {
@@ -33,6 +44,7 @@ export default function RoomEditForm({ room }) {
 
     if (response.ok) {
       console.log("Data successfully updated!");
+      mutate("/api/rooms");
       router.push("/admin");
     } else {
       console.error("There seems to be a problem updating the data");
@@ -46,6 +58,24 @@ export default function RoomEditForm({ room }) {
       [name]: value,
     }));
   };
+
+  async function handleDelete() {
+    try {
+      const response = await fetch(`/api/rooms/${room._id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        console.log("Room deleted successfully!");
+        mutate("/api/rooms");
+        router.push("/admin");
+      } else {
+        console.error("Failed to delete room");
+      }
+    } catch (error) {
+      console.error("Error deleting room:", error);
+    }
+  }
 
   return (
     <FormContainer>
@@ -69,6 +99,7 @@ export default function RoomEditForm({ room }) {
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
       </Form>
+      <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
     </FormContainer>
   );
 }

@@ -36,7 +36,10 @@ export default async function handler(request, response) {
 
   if (request.method === "PUT") {
     const now = new Date();
-    if (now.getHours() === 10 && now.getMinutes() === 50) {
+    if (
+      (now.getHours() === 10 && now.getMinutes() === 50) ||
+      (now.getHours() === 23 && now.getMinutes() === 50)
+    ) {
       await resetRoomStates();
       response.status(200).json({ status: "Room states have been reset." });
     } else {
@@ -47,3 +50,14 @@ export default async function handler(request, response) {
 
   response.status(405).json({ status: "Request method not implemented." });
 }
+
+// Check and reset room states at 10:50 AM and 11:50 PM every day
+setInterval(async () => {
+  const now = new Date();
+  if (
+    (now.getHours() === 10 && now.getMinutes() === 50) ||
+    (now.getHours() === 23 && now.getMinutes() === 50)
+  ) {
+    await resetRoomStates();
+  }
+}, 60000);

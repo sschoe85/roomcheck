@@ -34,20 +34,6 @@ export default async function handler(request, response) {
     return;
   }
 
-  if (request.method === "PUT") {
-    const now = new Date();
-    if (
-      (now.getHours() === 10 && now.getMinutes() === 50) ||
-      (now.getHours() === 23 && now.getMinutes() === 50)
-    ) {
-      await resetRoomStates();
-      response.status(200).json({ status: "Room states have been reset." });
-    } else {
-      response.status(200).json({ status: "No action needed." });
-    }
-    return;
-  }
-
   response.status(405).json({ status: "Request method not implemented." });
 }
 

@@ -38,7 +38,6 @@ export default function RoomList({ userType }) {
   }
 
   async function fetchRoomData() {
-    setIsLoading(true);
     try {
       const response = await fetch("/api/rooms");
       if (!response.ok) {
@@ -46,10 +45,8 @@ export default function RoomList({ userType }) {
       }
       const data = await response.json();
       setRooms(data);
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching room data:", error);
-      setIsLoading(false);
     }
   }
 
@@ -59,36 +56,32 @@ export default function RoomList({ userType }) {
 
   return (
     <RoomListContainer>
-      {isLoading ? (
-        <h2>Loading...</h2>
-      ) : (
-        <ul>
-          {rooms.map((room, index) => (
-            <BasicListItem key={room._id}>
-              <RoomListItem key={room._id}>
-                <RoomIcon />
-                {room.name}
-                {room.subject}
-                <ButtonContainer>
-                  <RoomButton
-                    room={room}
-                    updateRoomState={
-                      userType === "teacher" ? updateRoomState : undefined
-                    }
-                    initialRoomState={room.status}
-                  />
-                  {userType === "admin" && (
-                    <Link href={`/admin/${room._id}`}>
-                      <EditButton>Edit</EditButton>
-                    </Link>
-                  )}
-                </ButtonContainer>
-              </RoomListItem>
-              {index !== rooms.length - 1 && <Divider />}
-            </BasicListItem>
-          ))}
-        </ul>
-      )}
+      <ul>
+        {rooms.map((room, index) => (
+          <BasicListItem key={room._id}>
+            <RoomListItem key={room._id}>
+              <RoomIcon />
+              {room.name}
+              {room.subject}
+              <ButtonContainer>
+                <RoomButton
+                  room={room}
+                  updateRoomState={
+                    userType === "teacher" ? updateRoomState : undefined
+                  }
+                  initialRoomState={room.status}
+                />
+                {userType === "admin" && (
+                  <Link href={`/admin/${room._id}`}>
+                    <EditButton>Edit</EditButton>
+                  </Link>
+                )}
+              </ButtonContainer>
+            </RoomListItem>
+            {index !== rooms.length - 1 && <Divider />}
+          </BasicListItem>
+        ))}
+      </ul>
     </RoomListContainer>
   );
 }

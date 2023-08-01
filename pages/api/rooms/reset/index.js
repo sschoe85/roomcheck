@@ -6,6 +6,7 @@ async function resetRoomStates() {
     await dbConnect();
     await Room.updateMany({}, { status: "Keine Angabe" });
     console.log("Room states have been reset.");
+    window.location.reload();
   } catch (error) {
     console.error("Error resetting room states:", error);
   }

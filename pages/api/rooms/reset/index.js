@@ -18,7 +18,7 @@ export default async function handler(request, response) {
     const now = new Date();
     if (
       (now.getHours() === 11 && now.getMinutes() === 0) ||
-      (now.getHours() === 11 && now.getMinutes() === 5) ||
+      (now.getHours() === 11 && now.getMinutes() === 20) ||
       (now.getHours() === 23 && now.getMinutes() === 50)
     ) {
       await resetRoomStates();

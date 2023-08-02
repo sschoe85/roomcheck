@@ -7,7 +7,6 @@ import {
   ButtonContainer,
   RoomName,
   RoomSubject,
-  MobileRoomListItem,
 } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";

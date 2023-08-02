@@ -5,6 +5,9 @@ import {
   RoomListItem,
   BasicListItem,
   ButtonContainer,
+  RoomName,
+  RoomSubject,
+  MobileRoomListItem,
 } from "./styles";
 import Divider from "../Divider";
 import RoomIcon from "../RoomIcon";
@@ -61,8 +64,8 @@ export default function RoomList({ userType }) {
           <BasicListItem key={room._id}>
             <RoomListItem key={room._id}>
               <RoomIcon />
-              {room.name}
-              {room.subject}
+              <RoomName>{room.name}</RoomName>
+              <RoomSubject>{room.subject}</RoomSubject>
               <ButtonContainer>
                 <RoomButton
                   room={room}

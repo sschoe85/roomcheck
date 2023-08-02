@@ -38,12 +38,12 @@ const ButtonContainer = styled.div`
 
 const RoomName = styled.span`
   font-weight: bold;
-  width: 150px; /* Set a fixed width for RoomName */
+  width: 150px;
 `;
 
 const RoomSubject = styled.span`
   color: #777;
-  width: 150px; /* Set a fixed width for RoomSubject */
+  width: 150px;
 `;
 
 export {

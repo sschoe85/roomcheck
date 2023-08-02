@@ -14,11 +14,17 @@ const RoomListItem = styled.li`
   margin-bottom: 40px;
   border-radius: 4px;
   padding: 10px;
-  margin-right: 30px;
   margin-bottom: 40px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+
+  /* Mobile view styles using media query */
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const BasicListItem = styled.div`
@@ -30,10 +36,22 @@ const ButtonContainer = styled.div`
   flex-direction: column;
 `;
 
+const RoomName = styled.span`
+  font-weight: bold;
+  width: 150px; /* Set a fixed width for RoomName */
+`;
+
+const RoomSubject = styled.span`
+  color: #777;
+  width: 150px; /* Set a fixed width for RoomSubject */
+`;
+
 export {
   RoomListContainer,
   RoomListTitle,
   RoomListItem,
   BasicListItem,
   ButtonContainer,
+  RoomName,
+  RoomSubject,
 };

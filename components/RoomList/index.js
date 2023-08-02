@@ -15,7 +15,6 @@ import EditButton from "../EditButton";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   async function updateRoomState(roomId, newState) {
     // API Call for updating the room state

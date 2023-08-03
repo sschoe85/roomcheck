@@ -1,9 +1,6 @@
 import { useSession } from "next-auth/react";
 import RoomList from "../../components/RoomList";
 import Link from "next/link";
-import { StyledTeacherIcon } from "../../components/TeacherIcon/styles";
-import { StyledStudentIconAdminView } from "../../components/StudentIcon/styles";
-import { StyledAdminIcon } from "../../components/AdminIcon/styles";
 import BottomNavigation from "../../components/BottomNavigation";
 import Heading from "../../components/Heading";
 import { useRouter } from "next/router";
@@ -16,15 +13,7 @@ export default function AdminView() {
   if (session && session.user.role === "admin") {
     return (
       <>
-        <Link href="/admin">
-          <StyledAdminIcon />
-        </Link>
-        <Link href="/student">
-          <StyledStudentIconAdminView />
-        </Link>
-        <Link href="/teacher">
-          <StyledTeacherIcon />
-        </Link>
+        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <RoomList userType="admin" />
         <BottomNavigation />
       </>
@@ -32,6 +21,7 @@ export default function AdminView() {
   } else {
     return (
       <>
+        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <AdminViewContainer>
           <Heading>Zugriff verweigert</Heading>
           <Link href="/login">

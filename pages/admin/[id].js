@@ -6,7 +6,6 @@ import RoomEditForm from "../../components/RoomEditForm";
 export default function EditRoomPage() {
   const router = useRouter();
   const { id } = router.query;
-  const { data: session } = useSession();
 
   const [roomData, setRoomData] = useState(null);
 
@@ -30,10 +29,6 @@ export default function EditRoomPage() {
       fetchRoomData();
     }
   }, [id]);
-  if (!session || session.user.role !== "admin") {
-    router.push("/login");
-    return null;
-  }
 
   return <RoomEditForm room={roomData} />;
 }

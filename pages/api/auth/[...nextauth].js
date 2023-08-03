@@ -10,7 +10,7 @@ if (process.env.VERCEL_ENV === "preview") {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text", placeholder: "fish" },
+        username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
       // and adding a fake authorization with static username and password:
@@ -21,8 +21,8 @@ if (process.env.VERCEL_ENV === "preview") {
         ) {
           return {
             id: "1",
-            name: "Admin",
-            email: "YOUR-EMAIL-USED@github",
+            name: "Katja",
+            email: "KATJA@github",
           };
         } else {
           return null;

@@ -51,7 +51,7 @@ const AdminButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #ac1f2d;
+    background-color: #e60047;
   }
 `;
 

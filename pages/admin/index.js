@@ -19,13 +19,6 @@ export default function AdminView() {
     }
   }, [session, router]);
 
-  // Check if the logged-in user is an admin, and redirect to homepage if not
-  useEffect(() => {
-    if (session?.user.role !== "admin") {
-      router.push("/");
-    }
-  }, [session, router]);
-
   // If the user is logged in and has admin privileges, display the admin view
   return (
     <>

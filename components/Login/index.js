@@ -26,7 +26,7 @@ export default function Login() {
     return (
       <LoginContainer>
         <LoginText>Bitte logge dich als Admin ein</LoginText>
-        <LoginButton onClick={() => signIn()}>Login mit GitHub</LoginButton>
+        <LoginButton onClick={() => signIn()}>Login</LoginButton>
       </LoginContainer>
     );
   }

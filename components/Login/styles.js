@@ -8,7 +8,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginButton = styled.button`
-  background-color: #007bff;
+  background-color: #ff0054;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -19,7 +19,7 @@ const LoginButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #e60047;
   }
 `;
 

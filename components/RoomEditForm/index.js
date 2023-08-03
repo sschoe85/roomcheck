@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Heading from "../Heading";
+import SubHeading from "../SubHeading";
 import {
   FormContainer,
   Label,
@@ -79,7 +79,7 @@ export default function RoomEditForm({ room }) {
 
   return (
     <FormContainer>
-      <Heading>Bearbeite den Raum</Heading>
+      <SubHeading>Bearbeite den Raum</SubHeading>
       <Form onSubmit={handleSubmitForm}>
         <Label htmlFor="roomName">Raumbezeichnung</Label>
         <Input

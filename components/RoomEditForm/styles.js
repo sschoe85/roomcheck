@@ -11,7 +11,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   max-width: 300px;
-  margin: 50px auto;
 `;
 
 const Label = styled.label`
@@ -53,9 +52,9 @@ const DeleteButton = styled.button`
   width: 200px;
   line-height: 45px;
   border-radius: 7px;
+  margin-top: 15px;
   font-weight: 400;
   font-size: 16px;
-  margin-top: 15px;
   box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
   transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   background-color: #ff0000;

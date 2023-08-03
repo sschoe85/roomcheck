@@ -1,7 +1,15 @@
 import { signIn, signOut, useSession } from "next-auth/react";
-import { LoginContainer, LoginButton, LoginText, LogoutButton } from "./styles";
+import {
+  LoginContainer,
+  LoginButton,
+  LoginText,
+  LogoutButton,
+  AdminButton,
+} from "./styles";
+import Router from "next/router";
 
 export default function Login() {
+  const router = Router;
   const { data: session } = useSession();
 
   if (session) {
@@ -9,6 +17,9 @@ export default function Login() {
       <LoginContainer>
         <LoginText>Eingeloggt als {session.user.name}</LoginText>
         <LogoutButton onClick={signOut}>Log Out</LogoutButton>
+        <AdminButton onClick={() => router.push("/admin")}>
+          Go to Admin View
+        </AdminButton>
       </LoginContainer>
     );
   } else {

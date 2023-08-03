@@ -13,6 +13,7 @@ const LoginButton = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
+  width: 170px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -23,12 +24,29 @@ const LoginButton = styled.button`
 `;
 
 const LogoutButton = styled.button`
-  background-color: #dc3545;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  width: 170px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const AdminButton = styled.button`
+  background-color: #ff0054;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   font-size: 16px;
+  margin-top: 15px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
@@ -42,4 +60,4 @@ const LoginText = styled.p`
   margin-bottom: 10px;
 `;
 
-export { LoginContainer, LoginButton, LoginText, LogoutButton };
+export { LoginContainer, LoginButton, LoginText, LogoutButton, AdminButton };

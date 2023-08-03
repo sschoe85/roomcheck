@@ -22,7 +22,7 @@ if (process.env.VERCEL_ENV === "preview") {
           return {
             id: "1",
             name: "Katja",
-            email: "KATJA@github",
+            email: "ekaterinabruch@gmail.com",
           };
         } else {
           return null;

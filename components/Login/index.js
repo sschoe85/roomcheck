@@ -7,6 +7,7 @@ import {
   AdminButton,
 } from "./styles";
 import Router from "next/router";
+import Link from "next/link";
 
 export default function Login() {
   const router = Router;
@@ -20,6 +21,9 @@ export default function Login() {
         <AdminButton onClick={() => router.push("/admin")}>
           Go to Admin View
         </AdminButton>
+        <Link href="/admin">
+          <AdminButton>Go to Admin View</AdminButton>
+        </Link>
       </LoginContainer>
     );
   } else {

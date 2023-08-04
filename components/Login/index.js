@@ -13,14 +13,16 @@ export default function Login() {
   const router = Router;
   const { data: session } = useSession();
 
+  const handleAdminClick = () => {
+    router.push("/admin");
+  };
+
   if (session) {
     return (
       <LoginContainer>
         <LoginText>Eingeloggt als {session.user.name}</LoginText>
         <LogoutButton onClick={signOut}>Log Out</LogoutButton>
-        <Link href="/admin">
-          <AdminButton>Go to Admin View</AdminButton>
-        </Link>
+        <AdminButton onClick={handleAdminClick}>Go to Admin View</AdminButton>
       </LoginContainer>
     );
   } else {

@@ -1,19 +1,24 @@
 import { NavButton, NavContainer, HomeIcon, LoginIcon } from "./styles";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function HomePageNavigation() {
+  const router = useRouter();
+  const handleHomeClick = () => {
+    router.push("/");
+  };
+
+  const handleLoginClick = () => {
+    router.push("/login");
+  };
+
   return (
     <NavContainer>
-      <Link href="/">
-        <NavButton>
-          <HomeIcon />
-        </NavButton>
-      </Link>
-      <Link href="/login">
-        <NavButton>
-          <LoginIcon />
-        </NavButton>
-      </Link>
+      <NavButton onClick={handleHomeClick}>
+        <HomeIcon />
+      </NavButton>
+      <NavButton onClick={handleLoginClick}>
+        <LoginIcon />
+      </NavButton>
     </NavContainer>
   );
 }

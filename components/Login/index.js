@@ -18,9 +18,6 @@ export default function Login() {
       <LoginContainer>
         <LoginText>Eingeloggt als {session.user.name}</LoginText>
         <LogoutButton onClick={signOut}>Log Out</LogoutButton>
-        <AdminButton onClick={() => router.push("/admin")}>
-          Go to Admin View
-        </AdminButton>
         <Link href="/admin">
           <AdminButton>Go to Admin View</AdminButton>
         </Link>

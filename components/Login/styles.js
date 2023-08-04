@@ -39,12 +39,13 @@ const LogoutButton = styled.button`
   }
 `;
 
-const AdminButton = styled.button`
+const RoleButton = styled.button`
   background-color: #ff0054;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
+  width: 170px;
   font-size: 16px;
   margin-top: 15px;
   cursor: pointer;
@@ -60,4 +61,4 @@ const LoginText = styled.p`
   margin-bottom: 10px;
 `;
 
-export { LoginContainer, LoginButton, LoginText, LogoutButton, AdminButton };
+export { LoginContainer, LoginButton, LoginText, LogoutButton, RoleButton };

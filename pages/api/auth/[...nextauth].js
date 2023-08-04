@@ -15,7 +15,7 @@ providers.push(
     async authorize(credentials) {
       if (
         credentials.username === "teacher" &&
-        credentials.password === "teacherpassword"
+        credentials.password === process.env.TEACHER_PW
       ) {
         return {
           id: "2",

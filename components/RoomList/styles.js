@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const RoomListContainer = styled.div`
   text-align: center;
-  margin-top: 90px;
+  margin: 90px auto 120px;
 `;
 
 const RoomListTitle = styled.h3`
@@ -14,7 +14,6 @@ const RoomListItem = styled.li`
   margin-bottom: 40px;
   border-radius: 4px;
   padding: 10px;
-  margin-bottom: 40px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -46,6 +45,11 @@ const RoomSubject = styled.span`
   width: 150px;
 `;
 
+const RoomUList = styled.ul`
+  margin: 0 20px 0 20px;
+  padding: 0;
+`;
+
 export {
   RoomListContainer,
   RoomListTitle,
@@ -54,4 +58,5 @@ export {
   ButtonContainer,
   RoomName,
   RoomSubject,
+  RoomUList,
 };

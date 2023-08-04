@@ -4,6 +4,32 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const providers = [];
 
+providers.push(
+  CredentialsProvider({
+    name: "Credentials",
+    credentials: {
+      username: { label: "Username", type: "text" },
+      password: { label: "Password", type: "password" },
+    },
+    // and adding a fake authorization with static username and password:
+    async authorize(credentials) {
+      if (
+        credentials.username === "teacher" &&
+        credentials.password === "teacherpassword"
+      ) {
+        return {
+          id: "2",
+          name: "Teacher",
+          email: "teacher@example.com",
+          role: "teacher",
+        };
+      } else {
+        return null;
+      }
+    },
+  })
+);
+
 if (process.env.VERCEL_ENV === "preview") {
   providers.push(
     // Create a credentials provider with dummy data, describing input fields:

@@ -28,7 +28,7 @@ export default function Login() {
   } else {
     return (
       <LoginContainer>
-        <LoginText>Bitte logge dich als Admin ein</LoginText>
+        <LoginText>Logge dich als Lehrer oder Admin ein</LoginText>
         <LoginButton onClick={() => signIn()}>Login</LoginButton>
       </LoginContainer>
     );

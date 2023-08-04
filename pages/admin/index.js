@@ -24,12 +24,8 @@ export default function AdminView() {
         <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <AdminViewContainer>
           <Heading>Zugriff verweigert</Heading>
-          <Link href="/login">
-            <AdminButton>Login</AdminButton>
-          </Link>
-          <Link href="/">
-            <HomeButton>Startseite</HomeButton>
-          </Link>
+          <AdminButton onClick={() => router.push("/login")}>Login</AdminButton>
+          <HomeButton onClick={() => router.push("/")}>Startseite</HomeButton>
         </AdminViewContainer>
       </>
     );

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import Heading from "../../components/Headings/Heading";
-import RoomEditForm from "../../components/RoomEditForm";
+import Navigation from "../../components/Navigation";
+import RoomEditForm from "../../components/RoomForm";
 
 export default function EditRoomPage() {
   const router = useRouter();
@@ -32,8 +32,8 @@ export default function EditRoomPage() {
 
   return (
     <>
-      <Heading>🏫✅ RoomCheck ✅🏫</Heading>
       <RoomEditForm room={roomData} />
+      <Navigation />
     </>
   );
 }

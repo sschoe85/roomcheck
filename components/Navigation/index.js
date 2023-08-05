@@ -7,7 +7,7 @@ import {
   LoginIcon,
 } from "./styles";
 
-export default function Navigation({ href, children }) {
+export default function Navigation({ userType }) {
   const router = useRouter();
 
   const handleHomeClick = () => {
@@ -23,14 +23,13 @@ export default function Navigation({ href, children }) {
       <NavButtonContainer onClick={handleHomeClick}>
         <HomeIcon />
       </NavButtonContainer>
-      {userType === "admin" && (
-        <NavButtonContainer onClick={handleLoginClick}>
-          <LoginIcon />
-        </NavButtonContainer>
-      )}
-      {userType !== "admin" && (
+      {userType === "admin" ? (
         <NavButtonContainer onClick={() => router.push("/form")}>
           <AddIcon />
+        </NavButtonContainer>
+      ) : (
+        <NavButtonContainer onClick={handleLoginClick}>
+          <LoginIcon />
         </NavButtonContainer>
       )}
     </NavContainer>

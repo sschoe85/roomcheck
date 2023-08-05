@@ -1,11 +1,11 @@
 import RoomList from "../../components/RoomList";
-import Heading from "../../components/Headings/Heading";
+import Navigation from "../../components/Navigation";
 
 export default function StudentView() {
   return (
     <>
-      <Heading>🏫✅ RoomCheck ✅🏫</Heading>
       <RoomList userType="student" />
+      <Navigation />
     </>
   );
 }

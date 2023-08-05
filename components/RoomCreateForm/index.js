@@ -2,7 +2,7 @@ import Heading from "../Headings/Heading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useState } from "react";
 
-export default function RoomForm({ handleSubmit }) {
+export default function RoomCreateForm({ handleSubmit }) {
   //create a state for the form
   const [formData, setFormData] = useState({
     roomName: "",

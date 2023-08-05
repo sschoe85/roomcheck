@@ -1,13 +1,11 @@
-import Heading from "../components/Headings/Heading";
 import RoomList from "../components/RoomList";
-import HomePageNavigation from "../components/HomepageNavigation";
+import Navigation from "../components/Navigation";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🏫✅ RoomCheck ✅🏫</Heading>
       <RoomList />
-      <HomePageNavigation />
+      <Navigation />
     </main>
   );
 }

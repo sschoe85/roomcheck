@@ -1,6 +1,8 @@
 import GlobalStyle from "../styles";
 import Head from "next/head";
 import { SessionProvider } from "next-auth/react";
+import Heading from "../components/Headings/Heading";
+import Navigation from "../components/Navigation";
 
 export default function App({
   Component,
@@ -13,6 +15,7 @@ export default function App({
         <title>RoomCheck</title>
       </Head>
       <SessionProvider session={session}>
+        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <Component {...pageProps} />
       </SessionProvider>
     </>

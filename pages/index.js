@@ -1,4 +1,4 @@
-import Heading from "../components/Heading";
+import Heading from "../components/Headings/Heading";
 import RoomList from "../components/RoomList";
 import HomePageNavigation from "../components/HomepageNavigation";
 

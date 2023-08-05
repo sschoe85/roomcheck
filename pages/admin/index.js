@@ -1,8 +1,7 @@
 import { useSession } from "next-auth/react";
 import RoomList from "../../components/RoomList";
-import Link from "next/link";
 import BottomNavigation from "../../components/BottomNavigation";
-import Heading from "../../components/Heading";
+import Heading from "../../components/Headings/Heading";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 
@@ -15,7 +14,6 @@ export default function AdminView() {
       <>
         <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <RoomList userType="admin" />
-        <BottomNavigation />
       </>
     );
   } else {

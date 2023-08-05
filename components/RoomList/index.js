@@ -12,7 +12,7 @@ import {
 import Divider from "../Divider";
 import RoomIcon from "../Icons/RoomIcon";
 import Link from "next/link";
-import EditButton from "../EditButton";
+import Button from "../Button";
 
 export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
@@ -75,7 +75,9 @@ export default function RoomList({ userType }) {
                 />
                 {userType === "admin" && (
                   <Link href={`/admin/${room._id}`}>
-                    <EditButton>Edit</EditButton>
+                    <Button color="#007bff" darkenedColor="#0056b3">
+                      Edit
+                    </Button>
                   </Link>
                 )}
               </ButtonContainer>

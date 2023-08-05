@@ -1,4 +1,4 @@
-import Heading from "../Heading";
+import Heading from "../Headings/Heading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useState } from "react";
 

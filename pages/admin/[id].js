@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import Heading from "../../components/Heading";
+import Heading from "../../components/Headings/Heading";
 import RoomEditForm from "../../components/RoomEditForm";
 
 export default function EditRoomPage() {

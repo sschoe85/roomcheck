@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SubHeading from "../Headings/SubHeading";
+import Heading from "../Headings/Heading";
 import {
   FormContainer,
   Label,
@@ -79,7 +79,7 @@ export default function RoomEditForm({ room }) {
 
   return (
     <FormContainer>
-      <SubHeading>Bearbeite den Raum</SubHeading>
+      <Heading>Bearbeite den Raum</Heading>
       <Form onSubmit={handleSubmitForm}>
         <Label htmlFor="roomName">Raumbezeichnung</Label>
         <Input
@@ -98,8 +98,8 @@ export default function RoomEditForm({ room }) {
           onChange={handleInputChange}
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
+        <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
       </Form>
-      <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
     </FormContainer>
   );
 }

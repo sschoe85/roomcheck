@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation";
-import RoomEditForm from "../../components/RoomForm";
+import RoomEditDeleteForm from "../../components/RoomEditDeleteForm";
 
 export default function EditRoomPage() {
   const router = useRouter();
@@ -32,7 +32,7 @@ export default function EditRoomPage() {
 
   return (
     <>
-      <RoomEditForm room={roomData} />
+      <RoomEditDeleteForm room={roomData} />
       <Navigation />
     </>
   );

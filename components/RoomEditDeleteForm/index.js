@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Heading from "../Headings/Heading";
+import SubHeading from "../Headings/SubHeading";
 import {
   FormContainer,
   Label,
@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { mutate } from "swr";
 
-export default function RoomEditForm({ room }) {
+export default function RoomEditDeleteForm({ room }) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     roomName: room?.name || "",
@@ -79,7 +79,7 @@ export default function RoomEditForm({ room }) {
 
   return (
     <FormContainer>
-      <Heading>Bearbeite den Raum</Heading>
+      <SubHeading>Bearbeite den Raum</SubHeading>
       <Form onSubmit={handleSubmitForm}>
         <Label htmlFor="roomName">Raumbezeichnung</Label>
         <Input
@@ -98,8 +98,8 @@ export default function RoomEditForm({ room }) {
           onChange={handleInputChange}
         />
         <SubmitButton type="submit">Änderungen speichern</SubmitButton>
-        <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
       </Form>
+      <DeleteButton onClick={handleDelete}>Raum löschen</DeleteButton>
     </FormContainer>
   );
 }

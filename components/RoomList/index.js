@@ -10,7 +10,7 @@ import {
   RoomUList,
 } from "./styles";
 import Divider from "../Divider";
-import RoomIcon from "../RoomIcon";
+import RoomIcon from "../Icons/RoomIcon";
 import Link from "next/link";
 import EditButton from "../EditButton";
 

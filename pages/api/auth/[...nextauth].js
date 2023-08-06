@@ -4,6 +4,17 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const providers = [];
 
+const previewCredentials = {
+  admin: {
+    username: "admin",
+    password: "adminpassword",
+  },
+  teacher: {
+    username: "teacher",
+    password: "teacherpassword",
+  },
+};
+
 providers.push(
   CredentialsProvider({
     name: "Credentials",
@@ -11,11 +22,20 @@ providers.push(
       username: { label: "Username", type: "text" },
       password: { label: "Password", type: "password" },
     },
-    // and adding a fake authorization with static username and password:
     async authorize(credentials) {
       if (
-        credentials.username === "teacher" &&
-        credentials.password === process.env.TEACHER_PW
+        credentials.username === previewCredentials.admin.username &&
+        credentials.password === previewCredentials.admin.password
+      ) {
+        return {
+          id: "1",
+          name: "Admin",
+          email: "admin@example.com",
+          role: "admin",
+        };
+      } else if (
+        credentials.username === previewCredentials.teacher.username &&
+        credentials.password === previewCredentials.teacher.password
       ) {
         return {
           id: "2",
@@ -30,33 +50,7 @@ providers.push(
   })
 );
 
-if (process.env.VERCEL_ENV === "preview") {
-  providers.push(
-    // Create a credentials provider with dummy data, describing input fields:
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-      // and adding a fake authorization with static username and password:
-      async authorize(credentials) {
-        if (
-          credentials.username === "admin" &&
-          credentials.password === "adminpassword"
-        ) {
-          return {
-            id: "1",
-            name: "Admin",
-            email: "ekaterinabruch@gmail.com",
-          };
-        } else {
-          return null;
-        }
-      },
-    })
-  );
-} else {
+if (process.env.VERCEL_ENV !== "preview") {
   providers.push(
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -66,7 +60,7 @@ if (process.env.VERCEL_ENV === "preview") {
 }
 
 function getRoleOfUser(email) {
-  if (email === "ekaterinabruch@gmail.com") {
+  if (email === "admin@example.com") {
     return "admin";
   } else if (email === "teacher@example.com") {
     return "teacher";
@@ -89,4 +83,5 @@ export const authOptions = {
     },
   },
 };
+
 export default NextAuth(authOptions);

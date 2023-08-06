@@ -12,7 +12,7 @@ export default function App({
     <>
       <GlobalStyle />
       <Head>
-        <title>RoomCheck</title>
+        <title>LMG RoomCheck</title>
       </Head>
       <SessionProvider session={session}>
         <Heading>🏫✅ RoomCheck ✅🏫</Heading>

@@ -18,7 +18,6 @@ export default function RoomList({ userType }) {
   const [rooms, setRooms] = useState([]);
 
   async function updateRoomState(roomId, newState) {
-    // API Call for updating the room state
     try {
       const response = await fetch(`/api/rooms/updatestatus/${roomId}`, {
         method: "PUT",
@@ -31,8 +30,6 @@ export default function RoomList({ userType }) {
       if (!response.ok) {
         throw new Error("Failed to update room status");
       }
-
-      // Fetch the updated room data after updating the status
       await fetchRoomData();
     } catch (error) {
       console.error("Error updating room status:", error);
@@ -56,10 +53,14 @@ export default function RoomList({ userType }) {
     fetchRoomData();
   }, []);
 
+  const sortedRooms = rooms.sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { numeric: true })
+  );
+
   return (
     <RoomListContainer>
       <RoomUList>
-        {rooms.map((room, index) => (
+        {sortedRooms.map((room, index) => (
           <BasicListItem key={room._id}>
             <RoomListItem key={room._id}>
               <RoomIcon />

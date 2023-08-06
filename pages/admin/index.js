@@ -3,7 +3,6 @@ import RoomList from "../../components/RoomList";
 import Heading from "../../components/Headings/Heading";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Button from "../../components/Button";
 import Navigation from "../../components/Navigation";
 
 export default function AdminView() {

@@ -10,7 +10,6 @@ export default function EditRoomPage() {
   const [roomData, setRoomData] = useState(null);
 
   useEffect(() => {
-    // Fetch room data using the roomId when the component mounts
     async function fetchRoomData() {
       try {
         const response = await fetch(`/api/rooms/${id}`);

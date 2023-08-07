@@ -34,8 +34,8 @@ providers.push(
           role: "admin",
         };
       } else if (
-        credentials.username === previewCredentials.teacher.username &&
-        credentials.password === previewCredentials.teacher.password
+        credentials.username === "teacher" &&
+        credentials.password === process.env.TEACHER_PW
       ) {
         return {
           id: "2",

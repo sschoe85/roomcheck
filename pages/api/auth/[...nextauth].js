@@ -35,7 +35,10 @@ providers.push(
         };
       } else if (
         credentials.username === previewCredentials.teacher.username &&
-        credentials.password === previewCredentials.teacher.password
+        credentials.password ===
+          (process.env.VERCEL_ENV === "preview"
+            ? "teacherpassword"
+            : process.env.TEACHER_PW)
       ) {
         return {
           id: "2",

@@ -11,7 +11,6 @@ import Router from "next/router";
 export default function Login() {
   const router = Router;
   const { data: session } = useSession();
-  console.log("Session", session);
 
   const handleAdminClick = () => {
     router.push("/admin");

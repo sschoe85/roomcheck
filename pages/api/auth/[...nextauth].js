@@ -4,17 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const providers = [];
 
-const previewCredentials = {
-  admin: {
-    username: process.env.ADMIN_USERNAME,
-    password: process.env.ADMIN_PASSWORD,
-  },
-  teacher: {
-    username: process.env.TEACHER_USERNAME,
-    password: process.env.TEACHER_PASSWORD,
-  },
-};
-
 providers.push(
   CredentialsProvider({
     name: "Credentials",
@@ -24,8 +13,8 @@ providers.push(
     },
     async authorize(credentials) {
       if (
-        credentials.username === previewCredentials.admin.username &&
-        credentials.password === previewCredentials.admin.password
+        credentials.username === process.env.ADMIN_USERNAME &&
+        credentials.password === process.env.ADMIN_PASSWORD
       ) {
         return {
           id: "1",
@@ -34,8 +23,8 @@ providers.push(
           role: "admin",
         };
       } else if (
-        credentials.username === previewCredentials.teacher.username &&
-        credentials.password === previewCredentials.teacher.password
+        credentials.username === process.env.TEACHER_USERNAME &&
+        credentials.password === process.env.TEACHER_PASSWORD
       ) {
         return {
           id: "2",
@@ -60,7 +49,7 @@ if (process.env.VERCEL_ENV !== "preview") {
 }
 
 function getRoleOfUser(email) {
-  if (email === "ekaterinabruch@gmail.com") {
+  if (email === process.env.ADMIN_EMAIL) {
     return "admin";
   } else if (email === "teacher@example.com") {
     return "teacher";

@@ -21,17 +21,17 @@ const NavButtonContainer = styled.button`
 
 const HomeIcon = styled(MdHome)`
   font-size: 40px;
-  color: #ff0054;
+  color: #f29400;
 `;
 
 const AddIcon = styled(MdAdd)`
   font-size: 40px;
-  color: #ff0054;
+  color: #f29400;
 `;
 
 const LoginIcon = styled(MdPerson)`
   font-size: 40px;
-  color: #ff0054;
+  color: #f29400;
 `;
 
 export { NavContainer, NavButtonContainer, HomeIcon, AddIcon, LoginIcon };

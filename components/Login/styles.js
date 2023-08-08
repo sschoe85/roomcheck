@@ -8,7 +8,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginButton = styled.button`
-  background-color: #ff0054;
+  background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -19,7 +19,7 @@ const LoginButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #e60047;
+    background-color: #0056b3;
   }
 `;
 
@@ -40,7 +40,7 @@ const LogoutButton = styled.button`
 `;
 
 const RoleButton = styled.button`
-  background-color: #ff0054;
+  background-color: #f29400;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -52,7 +52,7 @@ const RoleButton = styled.button`
   transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: #e60047;
+    background-color: #cc7700;
   }
 `;
 

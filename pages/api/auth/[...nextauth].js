@@ -4,17 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const providers = [];
 
-const previewCredentials = {
-  admin: {
-    username: process.env.ADMIN_USERNAME,
-    password: process.env.ADMIN_PASSWORD,
-  },
-  teacher: {
-    username: process.env.TEACHER_USERNAME,
-    password: process.env.TEACHER_PASSWORD,
-  },
-};
-
 providers.push(
   CredentialsProvider({
     name: "Credentials",
@@ -23,32 +12,6 @@ providers.push(
       password: { label: "Password", type: "password" },
     },
     async authorize(credentials) {
-      // Check for preview environment
-      if (process.env.VERCEL_ENV === "preview") {
-        if (
-          credentials.username === previewCredentials.admin.username &&
-          credentials.password === previewCredentials.admin.password
-        ) {
-          return {
-            id: "1",
-            name: "Admin",
-            email: "admin@example.com",
-            role: "admin",
-          };
-        } else if (
-          credentials.username === previewCredentials.teacher.username &&
-          credentials.password === previewCredentials.teacher.password
-        ) {
-          return {
-            id: "2",
-            name: "Teacher",
-            email: "teacher@example.com",
-            role: "teacher",
-          };
-        } else {
-          return null;
-        }
-      }
       if (
         credentials.username === process.env.ADMIN_USERNAME &&
         credentials.password === process.env.ADMIN_PASSWORD

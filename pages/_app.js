@@ -14,7 +14,7 @@ export default function App({
         <title>LMG RoomCheck</title>
       </Head>
       <SessionProvider session={session}>
-        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
+        <Heading />
         <Component {...pageProps} />
       </SessionProvider>
     </>

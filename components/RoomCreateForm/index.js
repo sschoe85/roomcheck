@@ -1,4 +1,4 @@
-import Heading from "../Headings/Heading";
+import SubHeading from "../Headings/SubHeading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useState } from "react";
 
@@ -19,7 +19,7 @@ export default function RoomCreateForm({ handleSubmit }) {
 
   return (
     <FormContainer>
-      <Heading>Erstelle einen neuen Raum</Heading>
+      <SubHeading>Erstelle einen neuen Raum</SubHeading>
       <Form onSubmit={handleSubmitForm}>
         <Label htmlFor="roomName">Raumbezeichnung</Label>
         <Input

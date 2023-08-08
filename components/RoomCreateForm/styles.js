@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Heading from "../Headings/Heading";
 
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
 `;
 
 const Form = styled.form`
@@ -12,7 +12,6 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   max-width: 300px;
-  margin: 50px auto;
 `;
 
 const Label = styled.label`
@@ -32,14 +31,14 @@ const SubmitButton = styled.button`
   padding: 10px 20px;
   margin-top: 30px;
   font-size: 16px;
-  background-color: #ff0054;
+  background-color: #f29400;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #d60045;
+    background-color: #cc7700;
   }
 `;
 

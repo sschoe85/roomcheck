@@ -19,7 +19,7 @@ providers.push(
         return {
           id: "1",
           name: "Admin",
-          email: "admin@example.com",
+          email: process.env.ADMIN_EMAIL,
           role: "admin",
         };
       } else if (

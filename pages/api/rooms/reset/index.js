@@ -5,7 +5,6 @@ async function resetRoomStates() {
   try {
     await dbConnect();
     await Room.updateMany({}, { status: "Keine Angabe" });
-    console.log("Room states have been reset.");
     window.location.reload();
   } catch (error) {
     console.error("Error resetting room states:", error);
@@ -13,10 +12,7 @@ async function resetRoomStates() {
 }
 
 export default async function handler(request, response) {
-  console.log("API Request received:", request.method);
-
   if (request.method === "PUT") {
-    // Execute the resetRoomStates function when a PUT request is received
     await resetRoomStates();
     response.status(200).json({ status: "Room states have been reset." });
     return;

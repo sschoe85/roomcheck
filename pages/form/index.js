@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import BottomNavigation from "../../components/BottomNavigation";
-import RoomForm from "../../components/RoomForm";
+import Navigation from "../../components/Navigation";
+import RoomCreateForm from "../../components/RoomCreateForm";
 
 export default function Form() {
   const router = useRouter();
@@ -28,8 +28,8 @@ export default function Form() {
 
   return (
     <>
-      <RoomForm handleSubmit={handleSubmit} />
-      <BottomNavigation />
+      <RoomCreateForm handleSubmit={handleSubmit} />
+      <Navigation />
     </>
   );
 }

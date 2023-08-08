@@ -4,10 +4,9 @@ import {
   LoginButton,
   LoginText,
   LogoutButton,
-  AdminButton,
+  RoleButton,
 } from "./styles";
 import Router from "next/router";
-import Link from "next/link";
 
 export default function Login() {
   const router = Router;
@@ -17,18 +16,26 @@ export default function Login() {
     router.push("/admin");
   };
 
+  const handleTeacherClick = () => {
+    router.push("/teacher");
+  };
+
   if (session) {
     return (
       <LoginContainer>
         <LoginText>Eingeloggt als {session.user.name}</LoginText>
         <LogoutButton onClick={signOut}>Log Out</LogoutButton>
-        <AdminButton onClick={handleAdminClick}>Go to Admin View</AdminButton>
+        {session.user.role === "teacher" ? (
+          <RoleButton onClick={handleTeacherClick}>Zur Teacher View</RoleButton>
+        ) : (
+          <RoleButton onClick={handleAdminClick}>Zur Admin View</RoleButton>
+        )}
       </LoginContainer>
     );
   } else {
     return (
       <LoginContainer>
-        <LoginText>Bitte logge dich als Admin ein</LoginText>
+        <LoginText>Logge dich als Lehrer oder Admin ein</LoginText>
         <LoginButton onClick={() => signIn()}>Login</LoginButton>
       </LoginContainer>
     );

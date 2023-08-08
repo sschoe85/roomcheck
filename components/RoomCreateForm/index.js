@@ -1,20 +1,16 @@
-import Heading from "../Heading";
+import Heading from "../Headings/Heading";
 import { FormContainer, Label, Input, Form, SubmitButton } from "./styles";
 import { useState } from "react";
 
-export default function RoomForm({ handleSubmit }) {
-  //create a state for the form
+export default function RoomCreateForm({ handleSubmit }) {
   const [formData, setFormData] = useState({
     roomName: "",
     roomSubject: "",
   });
 
-  //function to handle form submission
   function handleSubmitForm(event) {
-    event.preventDefault(); //prevent default form submission behavior (page reload on submit)
-    handleSubmit(formData); //function passed from the parent component
-
-    //reset form
+    event.preventDefault();
+    handleSubmit(formData);
     setFormData({
       roomName: "",
       roomSubject: "",

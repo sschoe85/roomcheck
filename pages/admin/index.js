@@ -1,10 +1,9 @@
 import { useSession } from "next-auth/react";
 import RoomList from "../../components/RoomList";
-import Link from "next/link";
-import BottomNavigation from "../../components/BottomNavigation";
-import Heading from "../../components/Heading";
+import Heading from "../../components/Headings/Heading";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import Navigation from "../../components/Navigation";
 
 export default function AdminView() {
   const { data: session } = useSession();
@@ -13,19 +12,18 @@ export default function AdminView() {
   if (session && session.user.role === "admin") {
     return (
       <>
-        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <RoomList userType="admin" />
-        <BottomNavigation />
+        <Navigation userType="admin" />
       </>
     );
   } else {
     return (
       <>
-        <Heading>🏫✅ RoomCheck ✅🏫</Heading>
         <AdminViewContainer>
           <Heading>Zugriff verweigert</Heading>
           <AdminButton onClick={() => router.push("/login")}>Login</AdminButton>
           <HomeButton onClick={() => router.push("/")}>Startseite</HomeButton>
+          <Navigation />
         </AdminViewContainer>
       </>
     );

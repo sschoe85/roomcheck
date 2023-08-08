@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SubHeading from "../SubHeading";
+import SubHeading from "../Headings/SubHeading";
 import {
   FormContainer,
   Label,
@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { mutate } from "swr";
 
-export default function RoomEditForm({ room }) {
+export default function RoomEditDeleteForm({ room }) {
   const router = useRouter();
   const [formData, setFormData] = useState({
     roomName: room?.name || "",

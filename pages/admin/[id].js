@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import Heading from "../../components/Heading";
-import RoomEditForm from "../../components/RoomEditForm";
+import Navigation from "../../components/Navigation";
+import RoomEditDeleteForm from "../../components/RoomEditDeleteForm";
 
 export default function EditRoomPage() {
   const router = useRouter();
@@ -10,7 +10,6 @@ export default function EditRoomPage() {
   const [roomData, setRoomData] = useState(null);
 
   useEffect(() => {
-    // Fetch room data using the roomId when the component mounts
     async function fetchRoomData() {
       try {
         const response = await fetch(`/api/rooms/${id}`);
@@ -32,8 +31,8 @@ export default function EditRoomPage() {
 
   return (
     <>
-      <Heading>🏫✅ RoomCheck ✅🏫</Heading>
-      <RoomEditForm room={roomData} />
+      <RoomEditDeleteForm room={roomData} />
+      <Navigation />
     </>
   );
 }

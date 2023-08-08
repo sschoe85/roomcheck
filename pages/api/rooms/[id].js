@@ -2,8 +2,7 @@ import dbConnect from "../../../db/models/connect";
 import Room from "../../../db/models/Room";
 
 export default async function handler(request, response) {
-  await dbConnect(); // Establishing connection with MongoDB database
-
+  await dbConnect();
   const { id } = request.query;
 
   if (request.method === "GET") {
@@ -22,8 +21,6 @@ export default async function handler(request, response) {
 
   if (request.method === "DELETE") {
     try {
-      console.log("Delete request received for Room ID:", id);
-
       const deletedRoom = await Room.findByIdAndDelete(id);
       if (!deletedRoom) {
         return response.status(404).json({ message: "Room not found" });

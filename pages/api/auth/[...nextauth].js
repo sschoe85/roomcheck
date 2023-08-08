@@ -34,7 +34,7 @@ providers.push(
           role: "admin",
         };
       } else if (
-        credentials.username === pprocess.env.TEACHER_USERNAME &&
+        credentials.username === process.env.TEACHER_USERNAME &&
         credentials.password === process.env.TEACHER_PASSWORD
       ) {
         return {

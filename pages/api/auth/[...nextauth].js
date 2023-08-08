@@ -24,8 +24,8 @@ providers.push(
     },
     async authorize(credentials) {
       if (
-        credentials.username === previewCredentials.admin.username &&
-        credentials.password === previewCredentials.admin.password
+        credentials.username === process.env.ADMIN_USERNAME &&
+        credentials.password === process.env.ADMIN_PASSWORD
       ) {
         return {
           id: "1",
@@ -34,8 +34,8 @@ providers.push(
           role: "admin",
         };
       } else if (
-        credentials.username === previewCredentials.teacher.username &&
-        credentials.password === previewCredentials.teacher.password
+        credentials.username === pprocess.env.TEACHER_USERNAME &&
+        credentials.password === process.env.TEACHER_PASSWORD
       ) {
         return {
           id: "2",

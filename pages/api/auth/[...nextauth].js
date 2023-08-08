@@ -6,12 +6,12 @@ const providers = [];
 
 const previewCredentials = {
   admin: {
-    username: "admin",
-    password: "adminpassword",
+    username: process.env.ADMIN_USERNAME,
+    password: process.env.ADMIN_PASSWORD,
   },
   teacher: {
-    username: "teacher",
-    password: "teacherpassword",
+    username: process.env.TEACHER_USERNAME,
+    password: process.env.TEACHER_PASSWORD,
   },
 };
 
@@ -35,10 +35,7 @@ providers.push(
         };
       } else if (
         credentials.username === previewCredentials.teacher.username &&
-        credentials.password ===
-          (process.env.VERCEL_ENV === "preview"
-            ? "teacherpassword"
-            : process.env.TEACHER_PW)
+        credentials.password === previewCredentials.teacher.password
       ) {
         return {
           id: "2",

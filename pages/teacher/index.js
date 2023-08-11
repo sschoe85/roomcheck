@@ -6,9 +6,14 @@ import { useEffect } from "react";
 export default function TeacherView() {
   const router = useRouter();
   const { data: session } = useSession();
+  console.log("Session data in TeacherView:", session);
 
   useEffect(() => {
-    if (!session || session.user.role !== "teacher") {
+    if (!session) {
+      return; // Session data is still loading
+    }
+
+    if (session.user.role !== "teacher") {
       router.push("/login");
     }
   }, [router, session]);

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import {
   NavContainer,
   NavButtonContainer,
@@ -8,14 +9,17 @@ import {
 } from "./styles";
 
 export default function Navigation({ userType }) {
+  const { data: session } = useSession();
   const router = useRouter();
 
   const handleHomeClick = () => {
-    router.push("/");
-  };
-
-  const handleLoginClick = () => {
-    router.push("/login");
+    if (session?.user?.role === "admin") {
+      router.push("/admin");
+    } else if (session?.user?.role === "teacher") {
+      router.push("/teacher");
+    } else {
+      router.push("/");
+    }
   };
 
   return (
@@ -23,12 +27,17 @@ export default function Navigation({ userType }) {
       <NavButtonContainer onClick={handleHomeClick}>
         <HomeIcon />
       </NavButtonContainer>
-      {userType === "admin" ? (
-        <NavButtonContainer onClick={() => router.push("/form")}>
-          <AddIcon />
-        </NavButtonContainer>
+      {session?.user?.role === "admin" ? (
+        <>
+          <NavButtonContainer onClick={() => router.push("/form")}>
+            <AddIcon />
+          </NavButtonContainer>
+          <NavButtonContainer onClick={() => router.push("/login")}>
+            <LoginIcon />
+          </NavButtonContainer>
+        </>
       ) : (
-        <NavButtonContainer onClick={handleLoginClick}>
+        <NavButtonContainer onClick={() => router.push("/login")}>
           <LoginIcon />
         </NavButtonContainer>
       )}

@@ -15,8 +15,10 @@ export default function Navigation({ userType }) {
   const handleHomeClick = () => {
     if (session?.user?.role === "admin") {
       router.push("/admin");
-    } else {
+    } else if (session?.user?.role === "teacher") {
       router.push("/teacher");
+    } else {
+      router.push("/");
     }
   };
 
@@ -25,10 +27,15 @@ export default function Navigation({ userType }) {
       <NavButtonContainer onClick={handleHomeClick}>
         <HomeIcon />
       </NavButtonContainer>
-      {userType === "admin" ? (
-        <NavButtonContainer onClick={() => router.push("/form")}>
-          <AddIcon />
-        </NavButtonContainer>
+      {session?.user?.role === "admin" ? (
+        <>
+          <NavButtonContainer onClick={() => router.push("/form")}>
+            <AddIcon />
+          </NavButtonContainer>
+          <NavButtonContainer onClick={() => router.push("/login")}>
+            <LoginIcon />
+          </NavButtonContainer>
+        </>
       ) : (
         <NavButtonContainer onClick={() => router.push("/login")}>
           <LoginIcon />

@@ -49,7 +49,10 @@ if (process.env.VERCEL_ENV !== "preview") {
 }
 
 function getRoleOfUser(email) {
-  if (email === process.env.ADMIN_EMAIL) {
+  if (
+    email === process.env.ADMIN_EMAIL_1 ||
+    email === process.env.ADMIN_EMAIL_2
+  ) {
     return "admin";
   } else if (email === "teacher@example.com") {
     return "teacher";
